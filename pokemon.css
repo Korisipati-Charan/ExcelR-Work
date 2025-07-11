@@ -1,0 +1,43 @@
+body{
+    padding:40px;
+    background-color: #FFFF81;
+    font-size:large;
+}
+
+h3{
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.blue{
+    background-color: blue;
+    height: 100px;
+    width: 300px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
+}
+
+.poket{
+    background-color: red;
+    border-radius: 1000px;
+    object-fit: cover;
+}
+
+.left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    width: 500px;
+}
+
+.item-centering{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

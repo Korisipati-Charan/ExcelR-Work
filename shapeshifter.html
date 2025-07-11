@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: #FFFF81;
+    }
+    body,.UForm{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card-light{
+        background-color: blueviolet;
+        border-radius: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100px;
+        height: 200px;
+    }
+    .card-dark{
+        background-color: black;
+        color: #FFFF81;
+        border-radius: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100px;
+        height: 200px;
+    }
+
+    .profiles{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 60vw;
+        gap: 20px;
+    }
+</style>
+<body>
+        <h1>Add a bio If you want</h1>
+    <form class="UForm">
+        <div class="name">
+            <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        </div>
+        <div class="bio">
+            <label for="bio">Describe yourself:</label>
+            <input type="text" name="bio" id="bio">
+        </div>
+        <div class="type">
+            <label for="type">Border-Style:</label>
+            <input type="text" name="type" id="type">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="profile-main">
+        <h1>Here are your profiles</h1>
+        <div class="profiles">
+            
+        </div>
+    </div>
+    <script>
+        let profiles = document.getElementsByClassName("profiles")[0];
+            let form = document.getElementsByClassName("UForm")[0];
+            form.addEventListener("submit", (event) =>{
+                event.preventDefault();
+                if(profiles.firstChild){
+                    profiles.removeChild(profiles.firstChild);
+                }
+                let data = new FormData(form);
+                let name = data.get("name");
+                let bio = data.get("bio");
+                let type = data.get("type");
+                let card = document.createElement("div");
+                card.className="card";
+                if(type == "Rounded"){
+                    card.style = "border-radius: 80px;";
+                }else if(type=="Square"){
+                    card.style = "border-radius: 100%";
+                }else{
+                    card.style = "border-radius: 50%";
+                }
+                let h3 = document.createElement("h3");
+                h3.textContent = `${name}`;
+                card.appendChild(h3);
+                let p = document.createElement("p");
+                p.textContent = `${bio}`;
+                card.appendChild(p);
+                let editbtn = document.createElement("button");
+                editbtn.textContent = "light";
+                editbtn.addEventListener("click", () =>{
+                    card.className = "card-light";
+                });
+                card.appendChild(editbtn);
+                let deletebtn = document.createElement("button");
+                deletebtn.textContent = "Dark";
+                deletebtn.addEventListener("click", () =>{
+                    card.className = "card-dark";
+                });
+                card.appendChild(deletebtn);
+                profiles.appendChild(card);
+            });
+    </script>
+</body>
+</html>
